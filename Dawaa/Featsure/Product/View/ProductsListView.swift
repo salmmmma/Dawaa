@@ -3,7 +3,6 @@
 //  Dawaa
 //
 //  Created by Mohammed Hassanien on 12/05/2026.
-//
 
 
 import SwiftUI
@@ -12,11 +11,7 @@ struct ProductsListView: View {
     
     @StateObject private var vm: ProductsListVM
     
-    let productCodes: String
-    
-    init(productCodes: String) {
-        self.productCodes = productCodes
-        
+    init() {
         let apiClient = ProductsApiClient()
         let repository = ProductsRepository(apiClient: apiClient)
         self._vm = StateObject(wrappedValue: ProductsListVM(repository: repository))
@@ -27,9 +22,7 @@ struct ProductsListView: View {
             content
         }
         .onAppear {
-            print("ProductsListView appeared")
-            print("productCodes:", productCodes)
-            vm.getProducts(productCodes: productCodes)
+            vm.getProducts()
         }
     }
     
@@ -37,10 +30,7 @@ struct ProductsListView: View {
     private var content: some View {
         switch vm.uiState {
             
-        case .idle:
-            loadingView
-            
-        case .loading:
+        case .idle, .loading:
             loadingView
             
         case .success(let products):
@@ -59,21 +49,26 @@ struct ProductsListView: View {
     }
     
     private var loadingView: some View {
-        VStack(spacing: 12) {
-            ForEach(0..<5, id: \.self) { _ in
-                RoundedRectangle(cornerRadius: 14)
-                    .fill(Color.gray.opacity(0.15))
-                    .frame(height: 115)
-                    .padding(.horizontal)
+        ScrollView(.horizontal, showsIndicators: false) {
+            LazyHStack(spacing: 12) {
+                ForEach(0..<5, id: \.self) { _ in
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(Color.gray.opacity(0.15))
+                        .frame(width: 170, height: 230)
+                }
             }
+            .padding(.horizontal)
         }
     }
     
     private func productsView(_ products: [ProductModel]) -> some View {
-        LazyVStack(spacing: 12) {
-            ForEach(products) { product in
-                ProductCard(product: product)
+        ScrollView(.horizontal, showsIndicators: false) {
+            LazyHStack(spacing: 12) {
+                ForEach(products) { product in
+                    ProductCard(product: product)
+                }
             }
+            .padding(.horizontal)
         }
     }
     

@@ -39,28 +39,16 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				App/Info.plist,
-				Featsure/Product/Model/ComponentModel.swift,
 			);
 			target = 63EE0C192FB1F1790045F6E9 /* Dawaa */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		633F422D2FB5C97600C1C17C /* Exceptions for "Dawaa" folder in "Copy Bundle Resources" phase from "Dawaa" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 63EE0C182FB1F1790045F6E9 /* Resources */;
-			membershipExceptions = (
-				Featsure/Product/Model/ComponentModel.swift,
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		63EE0C1C2FB1F1790045F6E9 /* Dawaa */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				63EE0C422FB1F17D0045F6E9 /* Exceptions for "Dawaa" folder in "Dawaa" target */,
-				633F422D2FB5C97600C1C17C /* Exceptions for "Dawaa" folder in "Copy Bundle Resources" phase from "Dawaa" target */,
 			);
 			path = Dawaa;
 			sourceTree = "<group>";
